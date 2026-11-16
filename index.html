@@ -25,7 +25,7 @@
  "additionalType": "https://schema.org/HomeAndConstructionBusiness",
  "@id": "https://souadeso-create.github.io/paysagiste-alger/#entreprise",
  "name": "Nacer Ait Aissi — Jardins et piscines",
- "description": "Équipe d'artisans en aménagement d'espaces verts : création et aménagement de jardins, entretien d'espaces verts, entretien de piscines à Alger et dans les communes alentour.",
+ "description": "Paysagiste à Alger, basé à Chéraga : création et aménagement de jardins, entretien d'espaces verts, entretien de piscines à Alger et dans les communes alentour.",
  "url": "https://souadeso-create.github.io/paysagiste-alger/",
  "telephone": "+213773232101",
  "image": "https://souadeso-create.github.io/paysagiste-alger/images/banniere.jpg",
@@ -220,10 +220,14 @@
   .centre { text-align: center; }
 
   /* Pourquoi */
-  .atouts { display: grid; gap: 20px; }
-  .atout { display: flex; align-items: center; gap: 16px; background: #fff; border: 1px solid #e6e8eb; border-radius: 8px; padding: 22px 24px; color: #666; }
-  .atout strong { color: var(--vert); font-weight: 700; }
-  .atout svg { width: 46px; height: 46px; padding: 11px; border-radius: 50%; background: #f1f8f3; color: var(--vert); }
+  .intro.centre { margin: -12px auto 40px; max-width: 620px; color: #555; }
+  .atouts { display: grid; gap: 16px; }
+  .atout { display: flex; align-items: flex-start; gap: 16px; background: #fff; border: 1px solid #e6e8eb; border-radius: 8px; padding: 22px 22px 24px; transition: border-color .2s, box-shadow .2s, transform .2s; }
+  .atout:hover { border-color: #b9dcc4; box-shadow: 0 6px 18px rgba(5, 144, 51, .1); transform: translateY(-2px); }
+  .atout svg { width: 50px; height: 50px; padding: 12px; border-radius: 50%; background: #eaf6ee; color: var(--vert); }
+  .atout h3 { font-size: 17.6px; font-weight: 700; color: var(--vert); line-height: 1.3; }
+  .atout p { margin-top: 5px; font-size: 15.2px; color: #666; }
+  .suite { margin-top: 40px; }
 
   /* Prestations */
   .prestations { display: grid; gap: 40px 30px; }
@@ -304,7 +308,7 @@
     .entete .bouton { padding: 12px 24px; font-size: 15.2px; }
     .section { padding: 100px 0; }
     .banniere + .section { padding-top: 120px; }
-    .atouts { grid-template-columns: repeat(3, 1fr); }
+    .atouts { grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .prestations { grid-template-columns: 1fr 1fr; }
     .vignette { aspect-ratio: 9 / 8; }
     .galerie { grid-template-columns: repeat(4, 1fr); }
@@ -319,6 +323,7 @@
   }
   @media (min-width: 1000px) {
     .prestations { grid-template-columns: repeat(3, 1fr); }
+    .atouts { grid-template-columns: repeat(3, 1fr); }
     .banniere { padding-top: 100px; }
     .pastilles { margin-top: 60px; }
   }
@@ -363,7 +368,7 @@
   <div class="banniere">
     <div class="cadre">
       <h1><span>Paysagiste à Alger</span><span>jardins et piscines</span></h1>
-      <p class="chapeau">Basés à Chéraga, nous sommes une équipe d'artisans en aménagement d'espaces verts. Nous nous occupons de la <strong>création de jardins</strong>, de l'<strong>entretien d'espaces verts</strong> et de l'<strong>entretien de piscines</strong>, à Alger et dans toutes les communes alentour.</p>
+      <p class="chapeau">Basés à Chéraga, nous nous occupons de la <strong>création de jardins</strong>, de l'<strong>entretien d'espaces verts</strong> et de l'<strong>entretien de piscines</strong>, à Alger et dans toutes les communes alentour.</p>
       <div class="actions">
         <a class="bouton bouton-grand" href="https://wa.me/213773232101?text=Bonjour%2C%20je%20souhaite%20un%20devis." rel="noopener">Devis sur WhatsApp</a>
         <a class="bouton bouton-grand" href="tel:+213773232101">Appeler le +213 773 23 21 01</a>
@@ -376,23 +381,37 @@
     </div>
   </div>
 
-  <section class="section">
+  <section class="section" id="pourquoi">
     <div class="cadre">
-      <h2 class="titre">Pourquoi faire appel à<br><strong>notre équipe</strong> ?</h2>
+      <h2 class="titre">Pourquoi faire appel<br><strong>à nous</strong> ?</h2>
+      <p class="intro centre">Voici ce que nous faisons pour votre jardin et votre piscine, de la première visite à l'entretien régulier.</p>
       <div class="atouts">
         <div class="atout">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.600-6.500 8-6.500s8 2.500 8 6.500"/></svg>
-          <span><strong>Une équipe d'artisans</strong> : vous nous parlez sans intermédiaire</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11M12 11c0-4 3-6 7-6 0 4-3 6-7 6zM12 15c0-3-2-5-6-5 0 3 2 5 6 5z"/></svg>
+          <div><h3>Nous créons votre jardin</h3><p>D'un terrain nu ou d'un jardin à refaire, nous concevons l'espace avec vous et nous le réalisons.</p></div>
+        </div>
+        <div class="atout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18"/><path d="M7 20v-5M7 15c-2 0-3-1.500-3-3.500S5.500 8 7 8s3 1.500 3 3.500S9 15 7 15z"/><path d="M16 20v-7M16 13c-2.500 0-4-2-4-4.500S13.500 4 16 4s4 2 4 4.500-1.500 4.500-4 4.500z"/></svg>
+          <div><h3>Nous plantons et aménageons</h3><p>Plantations, massifs et pelouse : nous mettons en place tout ce qui fait vivre votre jardin.</p></div>
+        </div>
+        <div class="atout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="2.500"/><circle cx="6" cy="17" r="2.500"/><path d="M8 8.500L20 18M8 15.500L20 6"/></svg>
+          <div><h3>Nous entretenons vos espaces verts</h3><p>Tonte de la pelouse, taille des haies et des arbustes, désherbage et nettoyage.</p></div>
+        </div>
+        <div class="atout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15c1.500-1.300 3-1.300 4.500 0s3 1.300 4.500 0 3-1.300 4.500 0 3 1.300 4.500 0"/><path d="M3 19.500c1.500-1.300 3-1.300 4.500 0s3 1.300 4.500 0 3-1.300 4.500 0 3 1.300 4.500 0"/><path d="M8 12V5.500a2 2 0 0 1 4 0M14 12V5.500a2 2 0 0 1 4 0M8 9h6"/></svg>
+          <div><h3>Nous entretenons votre piscine</h3><p>Nettoyage du bassin et suivi de la qualité de l'eau, avec des passages réguliers.</p></div>
         </div>
         <div class="atout">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.200-7-11a7 7 0 0 1 14 0c0 4.800-7 11-7 11z"/><circle cx="12" cy="10" r="2.500"/></svg>
-          <span><strong>Une visite sur place</strong> : nous venons voir avant de vous remettre le devis</span>
+          <div><h3>Nous venons voir sur place</h3><p>Avant tout devis, nous nous déplaçons chez vous, à Alger et dans les communes alentour.</p></div>
         </div>
         <div class="atout">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V11M12 11c0-4 3-6 7-6 0 4-3 6-7 6zM12 15c0-3-2-5-6-5 0 3 2 5 6 5z"/></svg>
-          <span><strong>Jardin et piscine</strong> : nous nous occupons des deux</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.600" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg>
+          <div><h3>Nous vous remettons un devis clair</h3><p>Le travail prévu est décrit noir sur blanc. Rien ne commence sans votre accord.</p></div>
         </div>
       </div>
+      <p class="centre suite"><a class="bouton bouton-grand" href="https://wa.me/213773232101?text=Bonjour%2C%20je%20souhaite%20un%20devis." rel="noopener">Nous écrire sur WhatsApp</a></p>
     </div>
   </section>
 
@@ -556,7 +575,7 @@
         <small>Jardins · Piscines</small>
       </span>
     </div>
-    <p>Paysagiste à Alger · Une équipe d'artisans en aménagement d'espaces verts</p>
+    <p>Paysagiste à Alger · Aménagement d'espaces verts et entretien de piscines</p>
     <p>Chéraga · De 8 h à 20 h</p>
     <p><a href="tel:+213773232101">+213 773 23 21 01</a></p>
     <p class="mention">Photos d'illustration.</p>
