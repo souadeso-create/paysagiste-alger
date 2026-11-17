@@ -42,8 +42,40 @@
  },
  "areaServed": [
   {
-   "@type": "AdministrativeArea",
-   "name": "Wilaya d'Alger"
+   "@type": "City",
+   "name": "Alger"
+  },
+  {
+   "@type": "City",
+   "name": "Aïn Benian"
+  },
+  {
+   "@type": "City",
+   "name": "Alger-Centre"
+  },
+  {
+   "@type": "City",
+   "name": "Baba Hassen"
+  },
+  {
+   "@type": "City",
+   "name": "Ben Aknoun"
+  },
+  {
+   "@type": "City",
+   "name": "Beni Messous"
+  },
+  {
+   "@type": "City",
+   "name": "Bir Mourad Raïs"
+  },
+  {
+   "@type": "City",
+   "name": "Birkhadem"
+  },
+  {
+   "@type": "City",
+   "name": "Bouzaréah"
   },
   {
    "@type": "City",
@@ -55,11 +87,7 @@
   },
   {
    "@type": "City",
-   "name": "Ouled Fayet"
-  },
-  {
-   "@type": "City",
-   "name": "El Achour"
+   "name": "Douéra"
   },
   {
    "@type": "City",
@@ -67,11 +95,7 @@
   },
   {
    "@type": "City",
-   "name": "Ben Aknoun"
-  },
-  {
-   "@type": "City",
-   "name": "Hydra"
+   "name": "El Achour"
   },
   {
    "@type": "City",
@@ -79,11 +103,35 @@
   },
   {
    "@type": "City",
-   "name": "Bouzaréah"
+   "name": "El Hammamet"
   },
   {
    "@type": "City",
-   "name": "Aïn Benian"
+   "name": "Hydra"
+  },
+  {
+   "@type": "City",
+   "name": "Khraïcia"
+  },
+  {
+   "@type": "City",
+   "name": "Mahelma"
+  },
+  {
+   "@type": "City",
+   "name": "Ouled Fayet"
+  },
+  {
+   "@type": "City",
+   "name": "Rahmania"
+  },
+  {
+   "@type": "City",
+   "name": "Saoula"
+  },
+  {
+   "@type": "City",
+   "name": "Souidania"
   },
   {
    "@type": "City",
@@ -294,7 +342,9 @@
   /* Zone */
   .duo { display: grid; gap: 40px; margin-top: 80px; }
   .zone .coches { display: grid; gap: 16px; margin: 24px 0 20px; }
-  .zone .communes { margin-bottom: 30px; color: #555; }
+  .zone .communes { margin-bottom: 12px; color: #555; }
+  .liste-communes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 30px; }
+  .liste-communes li { font-size: 13.6px; line-height: 1.4; padding: 4px 11px; border: 1px solid #cfe6d6; border-radius: 50px; background: #f3faf5; color: #24452f; }
   .carte { background: var(--gris); border-radius: 8px; box-shadow: var(--ombre); padding: 28px; }
   .carte dl { margin: 0; display: grid; gap: 16px; }
   .carte dt { font-size: 14px; color: #666; }
@@ -529,7 +579,33 @@
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg><span><strong>Alger</strong></span></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.500l4.500 4.500L19 7.500"/></svg><span><strong>Toutes les communes alentour</strong></span></li>
           </ul>
-          <p class="communes">Nous nous déplaçons notamment à Chéraga, Dély Ibrahim, Ouled Fayet, El Achour, Draria, Ben Aknoun, Hydra, El Biar, Bouzaréah, Aïn Benian, Staouéli et Zéralda.</p>
+          <p class="communes">Nous nous déplaçons à Alger et dans les communes alentour, notamment :</p>
+          <ul class="liste-communes">
+            <li>Aïn Benian</li>
+            <li>Alger-Centre</li>
+            <li>Baba Hassen</li>
+            <li>Ben Aknoun</li>
+            <li>Beni Messous</li>
+            <li>Bir Mourad Raïs</li>
+            <li>Birkhadem</li>
+            <li>Bouzaréah</li>
+            <li>Chéraga</li>
+            <li>Dély Ibrahim</li>
+            <li>Douéra</li>
+            <li>Draria</li>
+            <li>El Achour</li>
+            <li>El Biar</li>
+            <li>El Hammamet</li>
+            <li>Hydra</li>
+            <li>Khraïcia</li>
+            <li>Mahelma</li>
+            <li>Ouled Fayet</li>
+            <li>Rahmania</li>
+            <li>Saoula</li>
+            <li>Souidania</li>
+            <li>Staouéli</li>
+            <li>Zéralda</li>
+          </ul>
           <a class="bouton" href="tel:+213773232101">Appeler le +213 773 23 21 01</a>
         </div>
         <div>
