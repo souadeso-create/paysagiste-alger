@@ -7,6 +7,10 @@
 <meta name="description" content="Paysagiste à Alger, basé à Chéraga : création de jardins, entretien d'espaces verts et de piscines, à Alger et alentour. Devis par WhatsApp.">
 <meta name="theme-color" content="#059033">
 <link rel="canonical" href="https://paysagiste-alger.noraeditions.com/">
+<link rel="alternate" hreflang="fr" href="https://paysagiste-alger.noraeditions.com/">
+<link rel="alternate" hreflang="en" href="https://paysagiste-alger.noraeditions.com/en/">
+<link rel="alternate" hreflang="ar" href="https://paysagiste-alger.noraeditions.com/ar/">
+<link rel="alternate" hreflang="x-default" href="https://paysagiste-alger.noraeditions.com/">
 <meta name="robots" content="index, follow">
 <meta name="geo.region" content="DZ-16">
 <meta name="geo.placename" content="Chéraga, Alger">
@@ -188,6 +192,12 @@
   .entete .actions { display: flex; gap: 10px; }
   .entete .bouton { padding: 10px 16px; font-size: 14px; }
 
+  /* Onglet de langue */
+  .langues { display: flex; gap: 4px; flex-basis: 100%; justify-content: flex-end; }
+  .langues a { font-size: 12px; font-weight: 700; line-height: 1.4; text-decoration: none; color: #55635a; background: #fff; padding: 3px 11px; border: 1px solid #d5ddd8; border-radius: 50px; }
+  .langues a:hover { border-color: var(--vert); color: var(--vert); }
+  .langues a[aria-current="true"] { background: var(--vert); border-color: var(--vert); color: #fff; }
+
   /* Bannière */
   .banniere {
     position: relative; color: #fff; text-align: center; padding: 70px 0 0;
@@ -312,6 +322,7 @@
   @media (min-width: 700px) {
     .entete { padding: 15px 0; }
     .entete .cadre { display: grid; grid-template-columns: 1fr auto 1fr; }
+    .langues { grid-column: 1; justify-self: start; }
     .entete .marque { grid-column: 2; }
     .entete .actions { grid-column: 3; justify-self: end; }
     .entete .marque svg { width: 64px; height: 64px; }
@@ -342,6 +353,14 @@
     .banniere { padding-top: 100px; }
     .pastilles { margin-top: 60px; }
   }
+  /* Version arabe : écriture de droite à gauche */
+  [dir="rtl"] body, [dir="rtl"] .bouton, [dir="rtl"] input, [dir="rtl"] select, [dir="rtl"] textarea, [dir="rtl"] .lien { font-family: Cairo, "Noto Sans Arabic", Tahoma, Arial, sans-serif; }
+  [dir="rtl"] .marque { direction: ltr; text-align: left; }
+  [dir="rtl"] .titre.gauche { text-align: right; }
+  [dir="rtl"] .titre.gauche::after { margin-left: auto; margin-right: 0; }
+  [dir="rtl"] .etiquette { left: auto; right: 15px; }
+  [dir="rtl"] .etape:not(:last-child)::after { left: auto; right: 50%; }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .bouton { transition: none; }
@@ -363,6 +382,11 @@
 
 <header class="entete">
   <div class="cadre">
+    <nav class="langues" aria-label="Langue">
+      <a href="./" lang="fr" hreflang="fr" aria-current="true">FR</a>
+      <a href="en/" lang="en" hreflang="en">EN</a>
+      <a href="ar/" lang="ar" hreflang="ar">عربي</a>
+    </nav>
     <a class="marque" href="#haut" aria-label="Nacer Ait Aissi, retour en haut de page">
       <svg aria-hidden="true"><use href="#embleme"/></svg>
       <span>
