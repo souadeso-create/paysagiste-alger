@@ -249,6 +249,19 @@
   .galerie img { width: 100%; height: 100%; object-fit: cover; }
   .galerie figcaption { position: absolute; left: 50%; bottom: 15px; transform: translateX(-50%); background: #fff; font-size: 14px; font-weight: 700; padding: 5px 16px; border-radius: 50px; box-shadow: var(--ombre); white-space: nowrap; }
 
+  /* Réalisations */
+  .realisations { display: grid; gap: 30px 24px; margin-bottom: 40px; }
+  .realisation figure { margin: 0; }
+  .realisation .photos { position: relative; border-radius: 8px; overflow: hidden; background: #dbe9dd; aspect-ratio: 4 / 3; box-shadow: var(--ombre); }
+  .realisation .photos img { width: 100%; height: 100%; object-fit: cover; }
+  .realisation .autres { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 6px; }
+  .realisation .autres button { padding: 0; border: 2px solid transparent; border-radius: 6px; overflow: hidden; background: #dbe9dd; aspect-ratio: 1; cursor: pointer; }
+  .realisation .autres button[aria-pressed="true"] { border-color: var(--vert); }
+  .realisation .autres img { width: 100%; height: 100%; object-fit: cover; }
+  .realisation h3 { font-size: 19.2px; font-weight: 700; margin-top: 16px; }
+  .realisation .lieu { margin-top: 4px; font-size: 14.4px; color: var(--vert); font-weight: 700; }
+  .realisation p.texte { margin-top: 8px; }
+
   /* Étapes */
   .etapes { display: grid; gap: 34px; max-width: 1100px; margin: 0 auto; counter-reset: etape; }
   .etape { position: relative; text-align: center; padding: 0 20px; counter-increment: etape; }
@@ -312,6 +325,7 @@
     .prestations { grid-template-columns: 1fr 1fr; }
     .vignette { aspect-ratio: 9 / 8; }
     .galerie { grid-template-columns: repeat(4, 1fr); }
+    .realisations { grid-template-columns: 1fr 1fr; }
     .galerie figure { height: 249px; }
     .etapes { grid-template-columns: repeat(4, 1fr); gap: 0; }
     .etape:not(:last-child)::after { content: ""; position: absolute; top: 24px; left: 50%; width: 100%; height: 2px; background: var(--vert-vif); }
@@ -324,6 +338,7 @@
   @media (min-width: 1000px) {
     .prestations { grid-template-columns: repeat(3, 1fr); }
     .atouts { grid-template-columns: repeat(3, 1fr); }
+    .realisations { grid-template-columns: repeat(3, 1fr); }
     .banniere { padding-top: 100px; }
     .pastilles { margin-top: 60px; }
   }
@@ -423,6 +438,15 @@
           <a class="bouton" href="#devis">Demander un devis</a>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- Les réalisations ajoutées par Nacer depuis /espace/ : la section reste cachée tant qu'il n'y en a pas -->
+  <section class="section" id="realisations" hidden>
+    <div class="cadre">
+      <h2 class="titre">Nos<br><strong>réalisations</strong></h2>
+      <div class="realisations" id="liste-realisations"></div>
+      <p class="centre"><a class="bouton bouton-grand" href="#devis">Demander un devis</a></p>
     </div>
   </section>
 
@@ -545,10 +569,12 @@
     <p>Chéraga · De 8 h à 20 h</p>
     <p><a href="tel:+213773232101">+213 773 23 21 01</a></p>
     <p class="mention">Photos d'illustration.</p>
+    <p class="mention"><a href="espace/" rel="nofollow">Espace réservé</a></p>
     <p class="mention">Site propulsé par <a href="https://creation-site-internet.noraeditions.fr" rel="noopener">Création de site Nora Éditions</a></p>
   </div>
 </footer>
 
+<script src="espace/config.js"></script>
 <script>
   // Numéro WhatsApp au format international (Algérie +213, sans le 0 initial).
   var NUMERO_WHATSAPP = "213773232101";
@@ -563,6 +589,51 @@
     if (champs.projet.value.trim()) lignes.push("Projet : " + champs.projet.value.trim());
     window.open("https://wa.me/" + NUMERO_WHATSAPP + "?text=" + encodeURIComponent(lignes.join("\n")), "_blank", "noopener");
   });
+
+  // Les réalisations ajoutées depuis /espace/ : lues dans la base, affichées seulement s'il y en a
+  (function () {
+    var C = window.ESPACE_CONFIG; if (!C || !window.fetch) return;
+    var photo = function (chemin) { return C.url + "/storage/v1/object/public/realisations/" + chemin; };
+    fetch(C.url + "/rest/v1/realisations?select=titre,categorie,commune,description,photos&site=eq." + encodeURIComponent(C.site) + "&visible=is.true&order=cree_le.desc&limit=30", { headers: { apikey: C.cle } })
+      .then(function (r) { return r.ok ? r.json() : []; })
+      .then(function (liste) {
+        if (!liste || !liste.length) return;
+        var zone = document.getElementById("liste-realisations");
+        liste.forEach(function (x) {
+          var photos = (x.photos || []).slice(0, 6); if (!photos.length) return;
+          var a = document.createElement("article"); a.className = "realisation";
+          var fig = document.createElement("figure");
+          var cadre = document.createElement("div"); cadre.className = "photos";
+          var grande = document.createElement("img"); grande.loading = "lazy"; grande.alt = x.titre; grande.src = photo(photos[0]);
+          cadre.appendChild(grande);
+          if (x.categorie) { var e = document.createElement("span"); e.className = "etiquette"; e.textContent = x.categorie; cadre.appendChild(e); }
+          fig.appendChild(cadre);
+          if (photos.length > 1) {
+            var autres = document.createElement("div"); autres.className = "autres";
+            photos.forEach(function (chemin, i) {
+              var b = document.createElement("button"); b.type = "button"; b.setAttribute("aria-pressed", i === 0 ? "true" : "false"); b.setAttribute("aria-label", "Voir la photo " + (i + 1));
+              var m = document.createElement("img"); m.loading = "lazy"; m.alt = ""; m.src = photo(chemin); b.appendChild(m);
+              b.addEventListener("click", function () {
+                grande.src = photo(chemin);
+                Array.prototype.forEach.call(autres.children, function (c) { c.setAttribute("aria-pressed", c === b ? "true" : "false"); });
+              });
+              autres.appendChild(b);
+            });
+            fig.appendChild(autres);
+          }
+          a.appendChild(fig);
+          var h = document.createElement("h3"); h.textContent = x.titre; a.appendChild(h);
+          if (x.commune) { var l = document.createElement("p"); l.className = "lieu"; l.textContent = x.commune; a.appendChild(l); }
+          if (x.description) { var t = document.createElement("p"); t.className = "texte"; t.textContent = x.description; a.appendChild(t); }
+          zone.appendChild(a);
+        });
+        if (!zone.children.length) return;
+        document.getElementById("realisations").hidden = false;
+        // les vraies photos remplacent les photos d'illustration
+        var illustration = document.getElementById("exterieur"); if (illustration) illustration.hidden = true;
+      })
+      .catch(function () {});
+  })();
 </script>
 </body>
 </html>

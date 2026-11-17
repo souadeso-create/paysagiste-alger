@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mon espace — Nacer Ait Aissi</title>
+<meta name="theme-color" content="#059033">
+<link rel="icon" href="../logo-embleme.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+  :root { --vert: #059033; --vert-vif: #07a83f; --rouge: #e0332a; --rouge-fonce: #c42a22; --texte: #333; --gris: #f8f9fa; --trait: #dfe3e7; }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; font: 400 16px/1.55 Lato, Arial, sans-serif; color: var(--texte); background: var(--gris); }
+  h1, h2, h3, p { margin: 0; }
+  [hidden] { display: none !important; }
+  .cadre { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+
+  header { background: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, .08); padding: 12px 0; position: sticky; top: 0; z-index: 5; }
+  header .cadre { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .marque { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; line-height: 1; }
+  .marque img { width: 44px; height: 44px; }
+  .marque b { display: block; font-size: 10px; font-weight: 700; color: var(--vert); letter-spacing: .4em; text-transform: uppercase; }
+  .marque strong { display: block; margin-top: 3px; font: 400 22px/1 Marcellus, Georgia, serif; color: #0f3d24; letter-spacing: .07em; text-transform: uppercase; }
+
+  main { padding: 26px 0 60px; }
+  h1 { font-size: 26px; font-weight: 400; color: var(--vert); line-height: 1.25; }
+  h1 strong { font-weight: 700; }
+  h1::after { content: ""; display: block; width: 30px; height: 5px; border-radius: 3px; background: var(--rouge); margin-top: 12px; }
+  .sous-titre { margin-top: 14px; color: #555; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 14px; }
+
+  .carte { background: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, .08); padding: 22px 18px; margin-top: 22px; }
+  form { display: grid; gap: 16px; }
+  label { display: grid; gap: 6px; font-size: 14.4px; font-weight: 700; }
+  label small { font-weight: 400; color: #666; }
+  input, select, textarea { width: 100%; font: 400 16px/1.4 Lato, Arial, sans-serif; color: var(--texte); background: #fff; border: 1px solid #cfd4d9; border-radius: 4px; padding: 12px 14px; min-height: 48px; }
+  textarea { min-height: 110px; resize: vertical; }
+  input[type=file] { padding: 10px; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible { outline: 3px solid rgba(5, 144, 51, .5); outline-offset: 2px; }
+
+  .bouton { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 22px; border-radius: 4px; border: 1px solid var(--rouge); background: var(--rouge); color: #fff; font: 700 16px/1.2 Lato, Arial, sans-serif; cursor: pointer; text-decoration: none; }
+  .bouton:hover { background: var(--rouge-fonce); border-color: var(--rouge-fonce); }
+  .bouton[disabled] { opacity: .6; cursor: default; }
+  .bouton.contour { background: #fff; color: var(--rouge); }
+  .bouton.contour:hover { background: #fdecea; }
+  .bouton.petit { min-height: 40px; padding: 8px 14px; font-size: 14px; }
+  .bouton.neutre { background: #fff; color: var(--texte); border-color: #cfd4d9; }
+  .lien { background: none; border: 0; padding: 0; color: var(--vert); font: 700 15px Lato, Arial, sans-serif; text-decoration: underline; cursor: pointer; justify-self: start; }
+
+  .message { margin-top: 16px; padding: 12px 14px; border-radius: 6px; font-size: 15px; }
+  .message.erreur { background: #fdecea; color: #8f1d17; border: 1px solid #f3b9b4; }
+  .message.succes { background: #eefff4; color: #0b5a25; border: 1px solid #a9dfba; }
+  .message.info { background: #eef4ff; color: #1d3f7a; border: 1px solid #bcd0f3; }
+
+  .apercus { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .apercus img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; background: #e8ece9; }
+
+  .liste { display: grid; gap: 14px; }
+  .realisation { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: start; padding-bottom: 14px; border-bottom: 1px solid var(--trait); }
+  .realisation:last-child { border-bottom: 0; padding-bottom: 0; }
+  .realisation img { width: 96px; height: 96px; object-fit: cover; border-radius: 6px; background: #e8ece9; }
+  .realisation h3 { font-size: 16.5px; font-weight: 700; line-height: 1.3; }
+  .realisation p { font-size: 14px; color: #666; margin-top: 2px; }
+  .realisation .etat { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 50px; background: #eefff4; color: #0b5a25; }
+  .realisation .etat.masquee { background: #f1f1f1; color: #666; }
+  .realisation .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .vide { color: #666; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="cadre">
+    <a class="marque" href="../" aria-label="Retour au site">
+      <img src="../logo-embleme.svg" alt="">
+      <span><b>Nacer</b><strong>Ait Aissi</strong></span>
+    </a>
+    <button class="bouton petit neutre" id="deconnexion" type="button" hidden>Se déconnecter</button>
+  </div>
+</header>
+
+<main class="cadre">
+
+  <!-- Connexion -->
+  <section id="ecran-connexion" hidden>
+    <h1>Mon <strong>espace</strong></h1>
+    <p class="sous-titre">Connectez-vous pour ajouter vos réalisations sur votre site.</p>
+    <div class="carte">
+      <form id="form-connexion">
+        <label>Adresse e-mail
+          <input type="email" name="email" autocomplete="username" required>
+        </label>
+        <label>Mot de passe
+          <input type="password" name="motdepasse" autocomplete="current-password" required>
+        </label>
+        <button class="bouton" type="submit">Se connecter</button>
+        <button class="lien" type="button" id="oubli">Mot de passe oublié ?</button>
+      </form>
+      <div id="message-connexion" class="message" hidden></div>
+    </div>
+  </section>
+
+  <!-- Choix du mot de passe (première connexion ou mot de passe oublié) -->
+  <section id="ecran-motdepasse" hidden>
+    <h1>Choisissez votre <strong>mot de passe</strong></h1>
+    <p class="sous-titre">Il vous servira à chaque connexion. Huit caractères au minimum.</p>
+    <div class="carte">
+      <form id="form-motdepasse">
+        <label>Nouveau mot de passe
+          <input type="password" name="motdepasse" autocomplete="new-password" minlength="8" required>
+        </label>
+        <label>Le même, une seconde fois
+          <input type="password" name="confirmation" autocomplete="new-password" minlength="8" required>
+        </label>
+        <button class="bouton" type="submit">Enregistrer mon mot de passe</button>
+      </form>
+      <div id="message-motdepasse" class="message" hidden></div>
+    </div>
+  </section>
+
+  <!-- Espace -->
+  <section id="ecran-espace" hidden>
+    <h1>Mes <strong>réalisations</strong></h1>
+    <p class="sous-titre">Ce que vous ajoutez ici apparaît aussitôt sur votre site, dans « Nos réalisations ».</p>
+
+    <div class="carte">
+      <h2>Ajouter une réalisation</h2>
+      <form id="form-ajout">
+        <label>Titre
+          <input type="text" name="titre" maxlength="90" placeholder="Jardin créé à Dély Ibrahim" required>
+        </label>
+        <label>Type de travail
+          <select name="categorie">
+            <option>Création de jardin</option>
+            <option>Entretien d'espaces verts</option>
+            <option>Entretien de piscine</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label>Commune <small>(facultatif)</small>
+          <input type="text" name="commune" maxlength="60">
+        </label>
+        <label>Quelques mots <small>(facultatif)</small>
+          <textarea name="description" maxlength="600" placeholder="Ce que vous avez fait pour ce client."></textarea>
+        </label>
+        <label>Photos <small>(de une à six)</small>
+          <input type="file" name="photos" accept="image/*" multiple required>
+        </label>
+        <div class="apercus" id="apercus"></div>
+        <button class="bouton" type="submit">Publier sur mon site</button>
+      </form>
+      <div id="message-ajout" class="message" hidden></div>
+    </div>
+
+    <div class="carte">
+      <h2>Déjà sur mon site</h2>
+      <div class="liste" id="liste"><p class="vide">Chargement…</p></div>
+      <div id="message-liste" class="message" hidden></div>
+    </div>
+  </section>
+
+</main>
+
+<script src="config.js"></script>
+<script>
+(function () {
+  "use strict";
+  var C = window.ESPACE_CONFIG;
+  var CLE_SESSION = "espace-session-" + C.site;
+  var session = null;
+
+  function $(id) { return document.getElementById(id); }
+  function montrer(ecran) {
+    ["ecran-connexion", "ecran-motdepasse", "ecran-espace"].forEach(function (e) { $(e).hidden = e !== ecran; });
+    $("deconnexion").hidden = ecran !== "ecran-espace";
+    window.scrollTo(0, 0);
+  }
+  function dire(id, texte, genre) {
+    var m = $(id);
+    if (!texte) { m.hidden = true; return; }
+    m.className = "message " + (genre || "info"); m.textContent = texte; m.hidden = false;
+  }
+  function entetes(avecJeton, plus) {
+    var h = { apikey: C.cle };
+    if (avecJeton && session) h.Authorization = "Bearer " + session.access_token;
+    for (var k in (plus || {})) h[k] = plus[k];
+    return h;
+  }
+  function enregistrerSession(s) {
+    session = s ? { access_token: s.access_token, refresh_token: s.refresh_token, expire: Date.now() + (s.expires_in || 3600) * 1000 } : null;
+    try { session ? localStorage.setItem(CLE_SESSION, JSON.stringify(session)) : localStorage.removeItem(CLE_SESSION); } catch (e) {}
+  }
+  async function lire(reponse) { var t = await reponse.text(); try { return JSON.parse(t); } catch (e) { return t; } }
+  function erreurLisible(d) {
+    var m = (d && (d.msg || d.message || d.error_description || d.error)) || "";
+    if (/Invalid login credentials/i.test(m)) return "Adresse e-mail ou mot de passe incorrect.";
+    if (/Email not confirmed/i.test(m)) return "Votre adresse e-mail n'est pas encore confirmée : ouvrez le message reçu et suivez le lien.";
+    if (/rate limit|too many/i.test(m)) return "Trop d'essais. Patientez quelques minutes avant de recommencer.";
+    if (/row-level security|not authorized|permission/i.test(m)) return "Ce compte n'a pas le droit de modifier ce site.";
+    if (/Password should be/i.test(m)) return "Ce mot de passe est trop court ou trop simple.";
+    return "Une erreur est survenue. Réessayez dans un instant.";
+  }
+
+  async function sessionValide() {
+    if (!session) return false;
+    if (session.expire - Date.now() > 60000) return true;
+    try {
+      var r = await fetch(C.url + "/auth/v1/token?grant_type=refresh_token", { method: "POST", headers: entetes(false, { "Content-Type": "application/json" }), body: JSON.stringify({ refresh_token: session.refresh_token }) });
+      if (!r.ok) { enregistrerSession(null); return false; }
+      enregistrerSession(await r.json()); return true;
+    } catch (e) { return true; } // hors connexion : on garde la session, l'appel suivant dira l'erreur
+  }
+
+  // Connexion
+  $("form-connexion").addEventListener("submit", async function (ev) {
+    ev.preventDefault(); dire("message-connexion");
+    var f = this.elements, bouton = this.querySelector("button[type=submit]");
+    bouton.disabled = true;
+    try {
+      var r = await fetch(C.url + "/auth/v1/token?grant_type=password", { method: "POST", headers: entetes(false, { "Content-Type": "application/json" }), body: JSON.stringify({ email: f.email.value.trim(), password: f.motdepasse.value }) });
+      var d = await lire(r);
+      if (!r.ok) { dire("message-connexion", erreurLisible(d), "erreur"); return; }
+      enregistrerSession(d); f.motdepasse.value = ""; ouvrirEspace();
+    } catch (e) { dire("message-connexion", "Pas de connexion à internet. Réessayez.", "erreur"); }
+    finally { bouton.disabled = false; }
+  });
+
+  $("oubli").addEventListener("click", async function () {
+    var email = $("form-connexion").elements.email.value.trim();
+    if (!email) { dire("message-connexion", "Écrivez d'abord votre adresse e-mail, puis touchez de nouveau « Mot de passe oublié ? ».", "info"); return; }
+    try {
+      var retour = location.origin + location.pathname;
+      var r = await fetch(C.url + "/auth/v1/recover?redirect_to=" + encodeURIComponent(retour), { method: "POST", headers: entetes(false, { "Content-Type": "application/json" }), body: JSON.stringify({ email: email }) });
+      if (!r.ok) { dire("message-connexion", erreurLisible(await lire(r)), "erreur"); return; }
+      dire("message-connexion", "Si cette adresse a un compte, un message vient de lui être envoyé avec un lien pour choisir un nouveau mot de passe.", "succes");
+    } catch (e) { dire("message-connexion", "Pas de connexion à internet. Réessayez.", "erreur"); }
+  });
+
+  // Choix du mot de passe (lien d'invitation ou de récupération)
+  $("form-motdepasse").addEventListener("submit", async function (ev) {
+    ev.preventDefault(); dire("message-motdepasse");
+    var f = this.elements;
+    if (f.motdepasse.value !== f.confirmation.value) { dire("message-motdepasse", "Les deux mots de passe ne sont pas identiques.", "erreur"); return; }
+    try {
+      var r = await fetch(C.url + "/auth/v1/user", { method: "PUT", headers: entetes(true, { "Content-Type": "application/json" }), body: JSON.stringify({ password: f.motdepasse.value }) });
+      if (!r.ok) { dire("message-motdepasse", erreurLisible(await lire(r)), "erreur"); return; }
+      f.motdepasse.value = f.confirmation.value = ""; ouvrirEspace();
+    } catch (e) { dire("message-motdepasse", "Pas de connexion à internet. Réessayez.", "erreur"); }
+  });
+
+  $("deconnexion").addEventListener("click", async function () {
+    try { await fetch(C.url + "/auth/v1/logout", { method: "POST", headers: entetes(true) }); } catch (e) {}
+    enregistrerSession(null); montrer("ecran-connexion");
+  });
+
+  // Photos : aperçu, puis réduction avant l'envoi (une photo de téléphone pèse plusieurs méga-octets)
+  var champPhotos = $("form-ajout").elements.photos;
+  champPhotos.addEventListener("change", function () {
+    var zone = $("apercus"); zone.textContent = "";
+    Array.prototype.slice.call(this.files, 0, 6).forEach(function (fichier) {
+      var img = document.createElement("img"); img.alt = ""; img.src = URL.createObjectURL(fichier);
+      img.onload = function () { URL.revokeObjectURL(img.src); }; zone.appendChild(img);
+    });
+    dire("message-ajout", this.files.length > 6 ? "Seules les six premières photos seront envoyées." : "", "info");
+  });
+  function reduire(fichier) {
+    return new Promise(function (ok, ko) {
+      var img = new Image(), adresse = URL.createObjectURL(fichier);
+      img.onload = function () {
+        var max = 1600, e = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+        var c = document.createElement("canvas"); c.width = Math.round(img.naturalWidth * e); c.height = Math.round(img.naturalHeight * e);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); URL.revokeObjectURL(adresse);
+        c.toBlob(function (b) { b ? ok(b) : ko(new Error("image")); }, "image/jpeg", 0.82);
+      };
+      img.onerror = function () { URL.revokeObjectURL(adresse); ko(new Error("image")); };
+      img.src = adresse;
+    });
+  }
+  function identifiant() { return (crypto.randomUUID ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(16).slice(2)); }
+  function adressePhoto(chemin) { return C.url + "/storage/v1/object/public/realisations/" + chemin; }
+
+  // Ajout
+  $("form-ajout").addEventListener("submit", async function (ev) {
+    ev.preventDefault(); dire("message-ajout");
+    var formulaire = this, f = formulaire.elements, bouton = formulaire.querySelector("button[type=submit]");
+    var fichiers = Array.prototype.slice.call(f.photos.files, 0, 6);
+    if (!fichiers.length) { dire("message-ajout", "Ajoutez au moins une photo.", "erreur"); return; }
+    if (!(await sessionValide())) { montrer("ecran-connexion"); dire("message-connexion", "Votre session a expiré. Reconnectez-vous.", "info"); return; }
+    bouton.disabled = true;
+    var envoyees = [];
+    try {
+      for (var i = 0; i < fichiers.length; i++) {
+        dire("message-ajout", "Envoi de la photo " + (i + 1) + " sur " + fichiers.length + "…", "info");
+        var image = await reduire(fichiers[i]);
+        var chemin = C.site + "/" + identifiant() + ".jpg";
+        var r = await fetch(C.url + "/storage/v1/object/realisations/" + chemin, { method: "POST", headers: entetes(true, { "Content-Type": "image/jpeg", "Cache-Control": "max-age=31536000" }), body: image });
+        if (!r.ok) throw await lire(r);
+        envoyees.push(chemin);
+      }
+      var ligne = { site: C.site, titre: f.titre.value.trim(), categorie: f.categorie.value, commune: f.commune.value.trim() || null, description: f.description.value.trim() || null, photos: envoyees };
+      var r2 = await fetch(C.url + "/rest/v1/realisations", { method: "POST", headers: entetes(true, { "Content-Type": "application/json", Prefer: "return=minimal" }), body: JSON.stringify(ligne) });
+      if (!r2.ok) throw await lire(r2);
+      formulaire.reset(); $("apercus").textContent = "";
+      dire("message-ajout", "C'est publié : votre réalisation est sur votre site.", "succes");
+      chargerListe();
+    } catch (e) {
+      // on retire les photos déjà envoyées pour ne pas laisser de fichiers orphelins
+      for (var j = 0; j < envoyees.length; j++) { try { await fetch(C.url + "/storage/v1/object/realisations/" + envoyees[j], { method: "DELETE", headers: entetes(true) }); } catch (x) {} }
+      dire("message-ajout", e instanceof Error ? (e.message === "image" ? "Une des photos n'a pas pu être lue. Essayez avec une autre photo." : "Pas de connexion à internet. Réessayez.") : erreurLisible(e), "erreur");
+    } finally { bouton.disabled = false; }
+  });
+
+  // Liste
+  async function chargerListe() {
+    var zone = $("liste"); dire("message-liste");
+    try {
+      var r = await fetch(C.url + "/rest/v1/realisations?select=id,titre,categorie,commune,photos,visible,cree_le&site=eq." + encodeURIComponent(C.site) + "&order=cree_le.desc", { headers: entetes(true) });
+      var d = await lire(r);
+      if (!r.ok) { zone.textContent = ""; dire("message-liste", erreurLisible(d), "erreur"); return; }
+      zone.textContent = "";
+      if (!d.length) { var p = document.createElement("p"); p.className = "vide"; p.textContent = "Aucune réalisation pour l'instant. Ajoutez la première avec le formulaire ci-dessus."; zone.appendChild(p); return; }
+      d.forEach(function (x) { zone.appendChild(ligneRealisation(x)); });
+    } catch (e) { zone.textContent = ""; dire("message-liste", "Pas de connexion à internet. Réessayez.", "erreur"); }
+  }
+  function ligneRealisation(x) {
+    var a = document.createElement("article"); a.className = "realisation";
+    var img = document.createElement("img"); img.alt = ""; img.loading = "lazy"; if (x.photos && x.photos[0]) img.src = adressePhoto(x.photos[0]);
+    var corps = document.createElement("div");
+    var h = document.createElement("h3"); h.textContent = x.titre;
+    var p = document.createElement("p"); p.textContent = [x.categorie, x.commune, new Date(x.cree_le).toLocaleDateString("fr-FR")].filter(Boolean).join(" · ");
+    var etat = document.createElement("span"); etat.className = "etat" + (x.visible ? "" : " masquee"); etat.textContent = x.visible ? "Visible sur le site" : "Masquée";
+    var actions = document.createElement("div"); actions.className = "actions";
+    var b1 = document.createElement("button"); b1.type = "button"; b1.className = "bouton petit neutre"; b1.textContent = x.visible ? "Masquer" : "Afficher";
+    b1.addEventListener("click", async function () {
+      b1.disabled = true;
+      var r = await fetch(C.url + "/rest/v1/realisations?id=eq." + x.id, { method: "PATCH", headers: entetes(true, { "Content-Type": "application/json", Prefer: "return=minimal" }), body: JSON.stringify({ visible: !x.visible }) });
+      if (!r.ok) dire("message-liste", erreurLisible(await lire(r)), "erreur");
+      chargerListe();
+    });
+    var b2 = document.createElement("button"); b2.type = "button"; b2.className = "bouton petit contour"; b2.textContent = "Supprimer";
+    b2.addEventListener("click", async function () {
+      if (!confirm("Supprimer définitivement « " + x.titre + " » et ses photos ?")) return;
+      b2.disabled = true;
+      var r = await fetch(C.url + "/rest/v1/realisations?id=eq." + x.id, { method: "DELETE", headers: entetes(true, { Prefer: "return=minimal" }) });
+      if (!r.ok) { dire("message-liste", erreurLisible(await lire(r)), "erreur"); b2.disabled = false; return; }
+      for (var i = 0; i < (x.photos || []).length; i++) { try { await fetch(C.url + "/storage/v1/object/realisations/" + x.photos[i], { method: "DELETE", headers: entetes(true) }); } catch (e) {} }
+      chargerListe();
+    });
+    actions.appendChild(b1); actions.appendChild(b2);
+    corps.appendChild(h); corps.appendChild(p); corps.appendChild(etat); corps.appendChild(actions);
+    a.appendChild(img); a.appendChild(corps);
+    return a;
+  }
+
+  function ouvrirEspace() { montrer("ecran-espace"); chargerListe(); }
+
+  // Démarrage
+  (async function () {
+    // lien reçu par e-mail : invitation ou mot de passe oublié
+    var h = new URLSearchParams(location.hash.replace(/^#/, ""));
+    if (h.get("access_token")) {
+      enregistrerSession({ access_token: h.get("access_token"), refresh_token: h.get("refresh_token"), expires_in: Number(h.get("expires_in")) || 3600 });
+      var genre = h.get("type");
+      history.replaceState(null, "", location.pathname);
+      if (genre === "invite" || genre === "recovery" || genre === "signup") { montrer("ecran-motdepasse"); return; }
+      ouvrirEspace(); return;
+    }
+    if (h.get("error_description")) {
+      history.replaceState(null, "", location.pathname); montrer("ecran-connexion");
+      dire("message-connexion", "Ce lien n'est plus valable. Écrivez votre adresse e-mail puis touchez « Mot de passe oublié ? » pour en recevoir un nouveau.", "erreur"); return;
+    }
+    try { session = JSON.parse(localStorage.getItem(CLE_SESSION) || "null"); } catch (e) { session = null; }
+    if (await sessionValide()) ouvrirEspace(); else montrer("ecran-connexion");
+  })();
+})();
+</script>
+</body>
+</html>
